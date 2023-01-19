@@ -137,6 +137,8 @@ export const mockDataAllSkills = [
   { title: "Wordpress" },
   { title: "Shopify/Liquid" },
   { title: "Distributed Systems" },
+  { title: "jQuery" },
+  { title: "XML" },
 ];
 
 export const mockDataSkills = [
