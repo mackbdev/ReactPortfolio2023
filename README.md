@@ -14,7 +14,7 @@ Note: Charts are displayed using mock data.
 
 ## Key Features
 
-- Customizable theme setup. Dark/Light mode enabled.
+- Customizable theme setup - changes made in ./src/theme.js , Dark/Light mode enabled.
 - Auto complete search bar.
 - Integrated charting library. 
 - Drag & Drop enabled for memes page.
