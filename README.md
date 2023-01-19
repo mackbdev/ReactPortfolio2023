@@ -21,7 +21,7 @@ Note: Charts are displayed using mock data.
 - GET & POST API calls initiated.
 - Map over data for filtering & pagination.
 - Exportable CSV from data tables.
-- Toast notification enabled.
+- Toast notifications enabled.
 - Validate form inputs & capture to database solution.
 - Page load interaction.
 - Integrated sidebar w/ custom css.
@@ -60,6 +60,16 @@ Your app is ready to be deployed!
 - Sidebar component does not persist page selected after page reload. Also does not capture page selected if link is visited directly. Solution would be to set a global state for the current page.
 
 - Responsive mobile design needed.
+
+## Tasklist
+
+- [ ] Transfer mockData to DB solution & serve via API
+- [ ] Add unit testing
+- [ ] Integrate CI/CD solution
+- [ ] Configure load balancing
+- [ ] Add analytics solution
+- [ ] Add authentication/authorization
+
 
 ## Deployment
 - Build the final application by running `npm run build`
