@@ -57,6 +57,8 @@ Your app is ready to be deployed!
 
 - Topbar component has a slight padding issue. Without padding the icon hover effect turns into an oval instead of a circle. If padding is added the background of the search box in dark mode bleeds outside the outline. Can be fixed by adding the required padding and changing the color scheme for dark mode.
 
+- Sidebar component does not persist page selected after page reload. Also does not capture page selected if link is visited directly. Solution would be to set a global state for the current page.
+
 ## Deployment
 - Build the final application by running `npm run build`
 - This application can be served locally by installing the Serve package globally and running\
