@@ -59,6 +59,8 @@ Your app is ready to be deployed!
 
 - Sidebar component does not persist page selected after page reload. Also does not capture page selected if link is visited directly. Solution would be to set a global state for the current page.
 
+- Responsive mobile design needed.
+
 ## Deployment
 - Build the final application by running `npm run build`
 - This application can be served locally by installing the Serve package globally and running\
