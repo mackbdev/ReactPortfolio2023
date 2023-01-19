@@ -136,6 +136,7 @@ export const mockDataAllSkills = [
   { title: "Webflow" },
   { title: "Wordpress" },
   { title: "Shopify/Liquid" },
+  { title: "Distributed Systems" },
 ];
 
 export const mockDataSkills = [
