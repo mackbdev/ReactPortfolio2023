@@ -32,7 +32,7 @@ function App() {
         <div className="app">
           <Sidebar isSidebar={isSidebar} />
           <main className="content">
-            <Topbar setIsSidebar={setIsSidebar} />
+            <Topbar setIsSidebar={setIsSidebar} setIsLoading={setIsLoading} />
             <Loading isLoading={isLoading} />
             <Routes>
               <Route path='*' element={<NotFound />} />

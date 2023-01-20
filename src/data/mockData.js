@@ -2,8 +2,13 @@ import { themeMode } from "../theme";
 
 export const mockDataSocials = {
   gitHub: 'https://github.com/mackbdev',
-  linkedIn: 'https://www.linkedin.com/in/mackenziebaksh/',
-  email: 'dev@mackenziebaksh.com'
+  linkedIn: 'https://www.linkedin.com/in/mackenziebaksh',
+  email: 'dev@mackenziebaksh.com',
+  site: 'https://www.mackenziebaksh.com'
+};
+
+export const mockDataEndpoints = {
+  api: `${mockDataSocials.site}/api/data`,
 };
 
 export const mockDataCars = [

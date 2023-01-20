@@ -40,8 +40,8 @@ const Memes = ({ setIsLoading }) => {
       let resJson = await res.json().then(({ data }) => data.memes);
       setMemesTotal(resJson.length);
       setMemes(resJson);
+      //configure pagination
       resJson = await resJson.slice(0, pageSize);
-      console.log(resJson);
       setPaginatedMemes(resJson);
       setIsLoading(false);
     } catch (e) {

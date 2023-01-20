@@ -16,7 +16,7 @@ Note: Charts are displayed using mock data.
 
 - Customizable theme setup - changes made in ./src/theme.js , Dark/Light mode enabled.
 - Auto complete search bar.
-- Integrated charting library. 
+- Integrated charting library.
 - Drag & Drop enabled for memes page.
 - GET & POST API calls initiated.
 - Map over data for filtering & pagination.
@@ -27,16 +27,36 @@ Note: Charts are displayed using mock data.
 - Integrated sidebar w/ custom css.
 - Firebase hosting used for deployment.
 
+## Branches
+
+### `addAPI`
+
+- express API for mockData - configured with firebase cloud functions
+
+  > - [ ] req param validation via typescript
+  > - [ ] update authorization via jwt
+
+  - GET: /api/data/skills - get all skills
+  - POST: /api/data/updateSkills - update skills
+
+  ```
+  {
+      "Ajax": { "title": "Ajax", "start": 2015, "info": "", "status": "active" },
+      "PHP": { "title": "PHP", "start": 2015, "info": "", "status": "active" }
+  }
+  ```
+
 ## Folders
 
 ```
 /src
 /public
+/server
 ```
 
 ## Available Scripts
 
-In the project directory after installing all dependencies using ` npm i `, you can run:
+In the project directory after installing all dependencies using `npm i`, you can run:
 
 ### `npm start`
 
@@ -63,15 +83,15 @@ Your app is ready to be deployed!
 
 ## Tasklist
 
-- [ ] Transfer mockData to DB solution & serve via API
+- [x] Transfer mockData to DB solution & serve via API
 - [ ] Add unit testing
 - [ ] Integrate CI/CD solution
 - [ ] Configure load balancing
 - [ ] Add analytics solution
 - [ ] Add authentication/authorization
 
-
 ## Deployment
+
 - Build the final application by running `npm run build`
 - This application can be served locally by installing the Serve package globally and running\
-`serve ./build`
+  `serve ./build`

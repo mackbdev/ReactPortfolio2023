@@ -1,20 +1,25 @@
 import { Box, IconButton, useTheme, TextField } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { ColorModeContext, themeMode } from "../../theme";
-import { mockDataSocials, mockDataAllSkills } from "../../data/mockData";
+import { mockDataSocials, mockDataEndpoints } from "../../data/mockData";
 //import InputBase from "@mui/material/InputBase";
+//import SearchIcon from "@mui/icons-material/Search";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import SearchIcon from "@mui/icons-material/Search";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import Autocomplete from "@mui/material/Autocomplete";
 
-const Topbar = () => {
+const Topbar = ({ setIsLoading }) => {
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  const [skills, setSkills] = useState([
+    { title: "Javascript" },
+    { title: "AWS" },
+  ]);
 
   // navigate source
   const gitHubClick = () => {
@@ -28,9 +33,33 @@ const Topbar = () => {
   const emailClick = () => {
     window.open(`mailto:${mockDataSocials.email}`);
   };
+  // load skills from api
+  const getSkills = async () => {
+    try {
+      //setIsLoading(true);
+      const res = await fetch(`${mockDataEndpoints.api}/skills`);
+      let resJson = await res.json().then((data) => data.result);
+      // convert data object to object needed for autoComplete
+      let objTitles = Object.keys(resJson).map((key) => {
+        return { title: resJson[key].title };
+      });
+      setSkills([...objTitles]);
+      console.log([...objTitles]);
+      //setIsLoading(false);
+    } catch (e) {
+      // setIsLoading(false);
+      toast.error("Failed to load skills!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getSkills();
+  }, []);
 
   // used to configure the autocomplete categories
-  const autoCompleteOptions = mockDataAllSkills.map((option) => {
+  const autoCompleteOptions = skills.map((option) => {
     const firstLetter = option.title[0].toUpperCase();
     return {
       firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
