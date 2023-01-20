@@ -85,6 +85,7 @@ Your app is ready to be deployed!
 
 - [x] Transfer mockData to DB solution & serve via API
 - [ ] Add unit testing
+- [ ] Decouple components
 - [ ] Integrate CI/CD solution
 - [ ] Configure load balancing
 - [ ] Add analytics solution
