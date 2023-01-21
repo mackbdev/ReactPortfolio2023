@@ -46,6 +46,13 @@ Note: Charts are displayed using mock data.
   }
   ```
 
+### `configureTesting`
+
+- restructure files for scalability & initiate testing suite
+
+  > - [ ] test all components
+  > - [ ] utilize cypress
+
 ## Folders
 
 ```
@@ -84,7 +91,7 @@ Your app is ready to be deployed!
 ## Tasklist
 
 - [x] Transfer mockData to DB solution & serve via API
-- [ ] Add unit testing
+- [x] Add unit testing
 - [ ] Decouple components
 - [ ] Integrate CI/CD solution
 - [ ] Configure load balancing
