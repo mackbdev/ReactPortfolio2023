@@ -53,6 +53,12 @@ Note: Charts are displayed using mock data.
   > - [ ] test all components
   > - [ ] utilize cypress
 
+### `configureCI/CD`
+
+- added yaml configuration for github actions
+
+  > - [ ] add deploy to multiple hosting sources
+
 ## Folders
 
 ```
