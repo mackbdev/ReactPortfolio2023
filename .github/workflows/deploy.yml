@@ -10,26 +10,21 @@ jobs:
   build_project:
     name: Build
     runs-on: ubuntu-latest
-    strategy:
-        matrix:
-          node-version: [16.x]
-
-      environment: prod
-      steps:
-      - uses: actions/checkout@v2
-      - name: Uses Node.js version ${{ matrix.node-version }}
-      - uses: actions/setup-node@v2
-        with:
-        node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm i -g firebase-tools
-      - run: npm test
-      - run: npm run build
-      - name: Archive build
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: build
+    environment: prod
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+      node-version: 16
+    - run: npm ci
+    - run: npm i -g firebase-tools
+    - run: npm test
+    - run: npm run build
+    - name: Archive build
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build
 
   deploy_project:
     name: Deploy

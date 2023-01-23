@@ -8,16 +8,12 @@ on:
 
 jobs:
   test_pull_request:
-    strategy:
-        matrix:
-          node-version: [16.x]
-          os: [ubuntu-latest]
-      steps:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
-      - name: Uses Node.js version ${{ matrix.node-version }}
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16
       - run: npm ci
       - run: npm test
       - run: npm run build
