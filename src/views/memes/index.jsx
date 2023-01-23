@@ -25,7 +25,7 @@ const Memes = ({ setIsLoading }) => {
   const [memesTotal, setMemesTotal] = useState(0);
   const [memes, setMemes] = useState([]);
   const [paginatedMemes, setPaginatedMemes] = useState([]);
-  const [pageSize, setPageSize] = useState(12);
+  const [pageSize, setPageSize] = useState(12); // eslint-disable-line
   const endpoint = "https://api.imgflip.com/get_memes";
 
   // navigate source
@@ -69,6 +69,7 @@ const Memes = ({ setIsLoading }) => {
 
   useEffect(() => {
     getMemes();
+    // eslint-disable-next-line
   }, []);
 
   return (
