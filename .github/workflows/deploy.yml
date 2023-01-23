@@ -7,11 +7,13 @@ on:
       - "**/README.md"
 
 jobs:
-  build:
+  build_project:
+    name: Build
+    runs-on: ubuntu-latest
     strategy:
         matrix:
           node-version: [16.x]
-          os: [ubuntu-latest]
+
       environment: prod
       steps:
       - uses: actions/checkout@v2
@@ -29,7 +31,7 @@ jobs:
           name: build
           path: build
 
-  deploy:
+  deploy_project:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
