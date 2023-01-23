@@ -28,7 +28,7 @@ jobs:
 
   deploy_project:
     name: Deploy
-    needs: build
+    needs: build_project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
