@@ -1,65 +1,36 @@
-import { Box, IconButton, useTheme, TextField } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { ColorModeContext, themeMode } from "../../../theme";
-import { mockDataSocials, mockDataEndpoints } from "../../../data/mockData";
-//import InputBase from "@mui/material/InputBase";
-//import SearchIcon from "@mui/icons-material/Search";
+import { Box, IconButton, useTheme, TextField } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
-import Autocomplete from "@mui/material/Autocomplete";
+import { ColorModeContext, themeMode } from "../../../theme";
+import {
+  gitHubClick,
+  emailClick,
+  linkedInClick,
+  getAutoCompleteOptions,
+} from "./logic";
 
-const Topbar = ({ setIsLoading }) => {
+const Topbar = () => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
-  const [skills, setSkills] = useState([
+  const [autoCompleteOptions, setAutoCompleteOptions] = useState([
     { title: "Javascript" },
     { title: "AWS" },
   ]);
 
-  // navigate source
-  const gitHubClick = () => {
-    window.open(mockDataSocials.gitHub, "_blank");
-  };
-
-  const linkedInClick = () => {
-    window.open(mockDataSocials.gitHub, "_blank");
-  };
-
-  const emailClick = () => {
-    window.open(`mailto:${mockDataSocials.email}`);
-  };
-  // load skills from api
-  const getSkills = async () => {
-    try {
-      //setIsLoading(true);
-      const res = await fetch(`${mockDataEndpoints.api}/skills`);
-      let resJson = await res.json().then((data) => data.result);
-      // convert data object to object needed for autoComplete
-      let objTitles = Object.keys(resJson).map((key) => {
-        return { title: resJson[key].title };
-      });
-      setSkills([...objTitles]);
-      console.log([...objTitles]);
-      //setIsLoading(false);
-    } catch (e) {
-      // setIsLoading(false);
-      toast.error("Failed to load skills!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    }
-  };
-
+  // load auto complete options when component mounts
   useEffect(() => {
-    getSkills();
+    getAutoCompleteOptions(setAutoCompleteOptions);
   }, []);
 
   // used to configure the autocomplete categories
-  const autoCompleteOptions = skills.map((option) => {
+  const autoCompleteOptionsMapped = autoCompleteOptions.map((option) => {
     const firstLetter = option.title[0].toUpperCase();
     return {
       firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
@@ -75,9 +46,9 @@ const Topbar = ({ setIsLoading }) => {
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
       >
-        {/* <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" /> */}
+        {/* Set auto complete */}
         <Autocomplete
-          options={autoCompleteOptions.sort(
+          options={autoCompleteOptionsMapped.sort(
             (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
           )}
           groupBy={(option) => option.firstLetter}
@@ -87,9 +58,6 @@ const Topbar = ({ setIsLoading }) => {
             <TextField {...params} label="Search Skills" />
           )}
         />
-        {/* <IconButton type="button" sx={{ p: 1 }}>
-          <SearchIcon />
-        </IconButton> */}
       </Box>
 
       {/* ICONS */}
@@ -101,9 +69,6 @@ const Topbar = ({ setIsLoading }) => {
             <LightModeOutlinedIcon />
           )}
         </IconButton>
-        {/* <IconButton component={Link} to="/profileForm">
-          <SettingsOutlinedIcon />
-        </IconButton> */}
         <IconButton onClick={linkedInClick}>
           <LinkedInIcon
             sx={{

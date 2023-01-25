@@ -1,14 +1,14 @@
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { useTheme } from "@mui/material";
+import Header from "../../components/Elements/Header";
 import { themeMode } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
-import Header from "../../components/Elements/Header";
-import { useTheme } from "@mui/material";
 
 const Contacts = () => {
+  // set variables
   const theme = useTheme();
-  const colors = themeMode(theme.palette.mode);
-
+  const colors = themeMode(theme.palette.mode); // configure columns for data table
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     { field: "registrarId", headerName: "Registrar ID" },

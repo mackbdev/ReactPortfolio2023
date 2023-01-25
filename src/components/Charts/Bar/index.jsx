@@ -4,6 +4,7 @@ import { themeMode } from "../../../theme";
 import { mockBarData as data } from "../../../data/mockData";
 
 const BarChart = ({ isDashboard = false }) => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
 

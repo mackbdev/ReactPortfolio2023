@@ -5,6 +5,7 @@ import { themeMode } from "../../../theme";
 import { mockGeographyData as data } from "../../../data/mockData";
 
 const GeographyChart = ({ isDashboard = false }) => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   return (

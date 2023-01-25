@@ -35,6 +35,7 @@ Note: Charts are displayed using mock data.
 
   > - [ ] req param validation via typescript
   > - [ ] update authorization via jwt
+  > - [ ] add all data & files to endpoint
 
   - GET: /api/data/skills - get all skills
   - POST: /api/data/updateSkills - update skills
