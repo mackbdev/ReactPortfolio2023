@@ -4,6 +4,7 @@ import { themeMode } from "../../../theme";
 import { mockLineData as data } from "../../../data/mockData";
 
 const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
 

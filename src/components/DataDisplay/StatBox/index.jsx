@@ -3,6 +3,7 @@ import { themeMode } from "../../../theme";
 import ProgressCircle from "../../Misc/ProgressCircle";
 
 const StatBox = ({ title, subtitle, icon, progress, increase }) => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
 

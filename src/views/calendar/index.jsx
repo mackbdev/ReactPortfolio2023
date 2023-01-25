@@ -14,37 +14,13 @@ import {
 } from "@mui/material";
 import Header from "../../components/Elements/Header";
 import { themeMode } from "../../theme";
+import { handleDateClick, handleEventClick } from "./logic";
 
 const Calendar = () => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   const [currentEvents, setCurrentEvents] = useState([]);
-
-  const handleDateClick = (selected) => {
-    const title = prompt("Please enter a new title for your event");
-    const calendarApi = selected.view.calendar;
-    calendarApi.unselect();
-
-    if (title) {
-      calendarApi.addEvent({
-        id: `${selected.dateStr}-${title}`,
-        title,
-        start: selected.startStr,
-        end: selected.endStr,
-        allDay: selected.allDay,
-      });
-    }
-  };
-
-  const handleEventClick = (selected) => {
-    if (
-      window.confirm(
-        `Are you sure you want to delete the event '${selected.event.title}'`
-      )
-    ) {
-      selected.event.remove();
-    }
-  };
 
   return (
     <Box m="20px">

@@ -15,9 +15,9 @@ import FAQ from "./views/faq";
 import Geography from "./views/geographyChart";
 import Memes from "./views/memes";
 import NotFound from "./views/notFound";
+import Calendar from "./views/calendar";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-import Calendar from "./views/calendar/calendar";
 import Loading from "./components/Global/Loading";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         <div className="app">
           <Sidebar isSidebar={isSidebar} />
           <main className="content">
-            <Topbar setIsSidebar={setIsSidebar} setIsLoading={setIsLoading} />
+            <Topbar setIsSidebar={setIsSidebar} />
             <Loading isLoading={isLoading} />
             <Routes>
               <Route path="*" element={<NotFound />} />

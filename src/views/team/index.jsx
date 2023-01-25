@@ -8,6 +8,7 @@ import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Elements/Header";
 
 const Team = () => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   const columns = [
@@ -74,6 +75,8 @@ const Team = () => {
         title="TEAM"
         subtitle="Table of Team Members w/ Access level Styling"
       />
+
+      {/* wrap data table in box component in order to style */}
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -103,6 +106,7 @@ const Team = () => {
           },
         }}
       >
+        {/* table of data */}
         <DataGrid rows={mockDataTeam} columns={columns} />
       </Box>
     </Box>

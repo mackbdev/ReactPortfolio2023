@@ -4,6 +4,7 @@ import { useTheme } from "@mui/material";
 import { mockPieData as data } from "../../../data/mockData";
 
 const PieChart = () => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   return (

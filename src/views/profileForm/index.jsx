@@ -8,71 +8,25 @@ import {
 } from "@mui/material";
 import { themeMode } from "../../theme";
 import { Formik } from "formik";
-import * as yup from "yup";
-import { toast } from "react-toastify";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Elements/Header";
+import {
+  profileSchema,
+  initialValues,
+  endpointGET,
+  submitData,
+  clickLink,
+} from "./logic";
 
-// commonly used regex phone validation
-const phoneRegExp =
-  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-
-// validation schema for form
-const profileSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("invalid email").required("required"),
-  contact: yup
-    .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("required"),
-  address1: yup.string().required("required"),
-  address2: yup.string(),
-});
-
-// set blank default values
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  contact: "",
-  address1: "",
-  address2: "",
-};
-
-const endpointGET = "https://eotjydxhv3fw5e7.m.pipedream.net";
-const endpointPOST = "https://eo140185ixb6rbq.m.pipedream.net";
-
-// navigate source
-const clickLink = () => {
-  window.open(endpointGET, "_blank");
-};
 const ProfileForm = ({ setIsLoading }) => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+  const isDesktop = useMediaQuery("(min-width:600px)");
 
+  // form submit handler
   const handleFormSubmit = async (values) => {
-    try {
-      setIsLoading(true);
-      await fetch(endpointPOST, {
-        method: "POST",
-        headers: {
-          Accept: "application.json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-        mode: "cors",
-        Cache: "default",
-      });
-      setIsLoading(false);
-      toast.success("Submission captured successfully!");
-    } catch (e) {
-      setIsLoading(false);
-      toast.error("Submission Failed!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    }
+    await submitData(values, setIsLoading);
   };
 
   return (
@@ -118,7 +72,7 @@ const ProfileForm = ({ setIsLoading }) => {
               gap="30px"
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+                "& > div": { gridColumn: isDesktop ? undefined : "span 4" },
               }}
             >
               <TextField

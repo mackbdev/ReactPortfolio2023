@@ -12,17 +12,11 @@ import CodeIcon from "@mui/icons-material/Code";
 import TabIcon from "@mui/icons-material/Tab";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import TerminalOutlinedIcon from "@mui/icons-material/TerminalOutlined";
-
+import { downloadResumeLink } from "./logic";
 const Dashboard = () => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
-
-  const resumeLink = "../assets/Mackenzie_Baksh_Resumes.zip";
-
-  // navigate source
-  const downloadResume = () => {
-    window.open(resumeLink, "_blank");
-  };
 
   return (
     <Box m="20px">
@@ -39,7 +33,7 @@ const Dashboard = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
-            onClick={downloadResume}
+            onClick={downloadResumeLink}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
             Download Resume
@@ -162,7 +156,7 @@ const Dashboard = () => {
               </Typography>
             </Box>
             <Box>
-              <IconButton onClick={downloadResume}>
+              <IconButton onClick={downloadResumeLink}>
                 <DownloadOutlinedIcon
                   sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
                 />

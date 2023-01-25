@@ -9,6 +9,7 @@ import { themeMode } from "../../theme";
 import { mockDataFaq } from "../../data/mockData";
 
 const FAQ = () => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   return (

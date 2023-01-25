@@ -4,6 +4,7 @@ import Header from "../../components/Elements/Header";
 import { themeMode } from "../../theme";
 
 const Geography = () => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   return (

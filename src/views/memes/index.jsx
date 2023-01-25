@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
 import { themeMode } from "../../theme";
 import Header from "../../components/Elements/Header";
 import {
@@ -18,39 +17,16 @@ import {
   GridItem,
   swap,
 } from "react-grid-dnd";
+import { clickLink, getMemes, endpoint } from "./logic";
 
 const Memes = ({ setIsLoading }) => {
+  // set variables
   const theme = useTheme();
   const colors = themeMode(theme.palette.mode);
   const [memesTotal, setMemesTotal] = useState(0);
   const [memes, setMemes] = useState([]);
   const [paginatedMemes, setPaginatedMemes] = useState([]);
   const [pageSize, setPageSize] = useState(12); // eslint-disable-line
-  const endpoint = "https://api.imgflip.com/get_memes";
-
-  // navigate source
-  const clickLink = () => {
-    window.open(endpoint, "_blank");
-  };
-  // load memes from api
-  const getMemes = async () => {
-    try {
-      setIsLoading(true);
-      const res = await fetch(endpoint);
-      let resJson = await res.json().then(({ data }) => data.memes);
-      setMemesTotal(resJson.length);
-      setMemes(resJson);
-      //configure pagination
-      resJson = await resJson.slice(0, pageSize);
-      setPaginatedMemes(resJson);
-      setIsLoading(false);
-    } catch (e) {
-      setIsLoading(false);
-      toast.error("Failed to load memes!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    }
-  };
 
   // update array when element dragged
   const dragHandler = (sourceId, sourceIndex, targetIndex) => {
@@ -67,8 +43,15 @@ const Memes = ({ setIsLoading }) => {
     setIsLoading(false);
   };
 
+  // load memes from api
   useEffect(() => {
-    getMemes();
+    getMemes(
+      setIsLoading,
+      setMemes,
+      setMemesTotal,
+      pageSize,
+      setPaginatedMemes
+    );
     // eslint-disable-next-line
   }, []);
 
