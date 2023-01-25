@@ -27,39 +27,6 @@ Note: Charts are displayed using mock data.
 - Integrated sidebar w/ custom css.
 - Firebase hosting used for deployment.
 
-## Branches
-
-### `addAPI`
-
-- express API for mockData - configured with firebase cloud functions
-
-  > - [ ] req param validation via typescript
-  > - [ ] update authorization via jwt
-  > - [ ] add all data & files to endpoint
-
-  - GET: /api/data/skills - get all skills
-  - POST: /api/data/updateSkills - update skills
-
-  ```
-  {
-      "Ajax": { "title": "Ajax", "start": 2015, "info": "", "status": "active" },
-      "PHP": { "title": "PHP", "start": 2015, "info": "", "status": "active" }
-  }
-  ```
-
-### `configureTesting`
-
-- restructure files for scalability & initiate testing suite
-
-  > - [ ] test all components
-  > - [ ] utilize cypress
-
-### `configureCI/CD`
-
-- added yaml configuration for github actions
-
-  > - [ ] add deploy to multiple hosting sources
-
 ## Folders
 
 ```
@@ -110,3 +77,42 @@ Your app is ready to be deployed!
 - Build the final application by running `npm run build`
 - This application can be served locally by installing the Serve package globally and running\
   `serve ./build`
+
+## Branches
+
+### `addAPI`
+
+- express API for mockData - configured with firebase cloud functions
+
+  > - [ ] req param validation via typescript
+  > - [ ] update authorization via jwt
+  > - [ ] add all data & files to endpoint
+
+  - GET: /api/data/skills - get all skills
+  - POST: /api/data/updateSkills - update skills
+
+  ```
+  {
+      "Ajax": { "title": "Ajax", "start": 2015, "info": "", "status": "active" },
+      "PHP": { "title": "PHP", "start": 2015, "info": "", "status": "active" }
+  }
+  ```
+
+### `configureTesting`
+
+- restructure files for scalability & initiate testing suite
+
+  > - [ ] test all components
+  > - [ ] utilize cypress
+
+### `configureCI/CD`
+
+- added yaml configuration for github actions
+
+  > - [ ] add deploy to multiple hosting sources
+
+### `decoupleComponents`
+
+- separate logic from component
+
+  > - [ ] move theme variables to logic
